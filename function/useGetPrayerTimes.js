@@ -26,7 +26,7 @@ export default function useGetPrayerTimes() {
 
   useEffect(() => {
     getPrayerTimes();
-  }, []); // Run only once on component mount
+  }, []); 
 
   return { prayerTimes, isLoading };
 }

@@ -13,7 +13,6 @@ const PrayerTimes = () => {
 
   useEffect(() => {
     if (!isLoading && prayerTimes.length > 0) {
-      // Logic to find upcoming prayer
       const date = new Date();
       const mins = date.getHours() * 60 + date.getMinutes();
       const upcoming = prayerTimes.find(([name, time]) => {
@@ -22,6 +21,7 @@ const PrayerTimes = () => {
           parseInt(arr[0]) * 60 + parseInt(arr[1].split(" ")[0]);
         return prayerMins > mins;
       });
+      console.log(upcoming);
       setUpcomingPrayer(upcoming);
     }
   }, [prayerTimes, isLoading]);
@@ -39,7 +39,7 @@ const PrayerTimes = () => {
           <Text style={styles.times}>UPCOMING PRAYER</Text>
           {upcomingPrayer && (
             <Text style={styles.times}>
-              {upcomingPrayer[0]} AT {upcomingPrayer[1]}
+              {upcomingPrayer[0]} AT {upcomingPrayer[1].split('(EEST)')}
             </Text>
           )}
         </View>
