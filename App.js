@@ -23,7 +23,12 @@ export default function App() {
           component={HomeScreen}
           options={{ title: "﷽", headerTitleAlign: "center" }}
         />
-        <Stack.Screen name="adan" component={AdhanScreen}></Stack.Screen>
+        <Stack.Screen name="adan" component={AdhanScreen} options={
+          {
+            title: "مواقيت الصلاة",
+            headerTitleAlign: "center",
+          }
+        }></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

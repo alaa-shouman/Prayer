@@ -10,7 +10,11 @@ import { GlobalStyles } from "../constants/styles";
 
 function AdhanScreen({ route }) {
   const prayerTimes = route?.params.times;
-  console.log(prayerTimes[0]);
+  const filteredPrayer = prayerTimes.filter((prayerTime) => {
+    const prayerNames = ['Fajr', 'Shuruq', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+    return prayerNames.includes(prayerTime[0]);
+  });
+  console.log(filteredPrayer)
   return (
     <ImageBackground
       source={require("../assets/doodles.png")}
@@ -19,12 +23,10 @@ function AdhanScreen({ route }) {
     >
       <ScrollView>
         <View>
-          {prayerTimes.map((prayerTime, index) => (
-            <View style={styles.prayertab}>
-              <Text></Text>
-              <Text style={styles.prayerName}>{prayerTime[0]}</Text>
-              <Text style={styles.prayerTime}>{prayerTime[1].split('(EEST)')}</Text>
-              <Text></Text>
+          {filteredPrayer.map((prayerTime, index) => (
+            <View style={styles.prayertab} key={index} className="text-red-100 flex-1 items-center justify-center bg-slate-700">
+              <Text key={prayerTime[0]} style={styles.prayerName}>{prayerTime[0]}</Text>
+              <Text key={prayerTime[1]} style={styles.prayerTime}>{prayerTime[1].split('(EEST)')}</Text>
             </View>
           ))}
         </View>
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal:10,
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     // shadowColor: GlobalStyles.colors.green_dark,
     // shadowOpacity: 0.4,
     // shadowOffset: { width: 2, height: 2 },

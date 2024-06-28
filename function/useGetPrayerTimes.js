@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import usegetLocation from "./usegetLocation";
 
 export default function useGetPrayerTimes() {
   const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
   const [prayerTimes, setPrayerTimes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const {location} = usegetLocation();
 
   const getPrayerTimes = async () => {
-    const api =
-      "https://api.aladhan.com/v1/calendarByCity/2024/5?city=Beirut&country=Lebanon&method=0";
+    const api = location ? `https://api.aladhan.com/v1/calendar/${year}/${month}?latitude=${location.lat}&longitude=${location.lng}&method=0` :
+      `https://api.aladhan.com/v1/calendarByCity/${year}/${month}?city=Beirut&country=Lebanon&method=0`;
 
     setIsLoading(true);
     try {
@@ -26,7 +30,8 @@ export default function useGetPrayerTimes() {
 
   useEffect(() => {
     getPrayerTimes();
-  }, []); 
+    console.log(location)
+  }, []);
 
   return { prayerTimes, isLoading };
 }
