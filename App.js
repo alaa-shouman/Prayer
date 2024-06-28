@@ -12,11 +12,15 @@ export default function App() {
     <NavigationContainer >
       <Stack.Navigator
         screenOptions={{
-          headerStyle: { backgroundColor: GlobalStyles.colors.green_secondary },
+          headerStyle: { backgroundColor: GlobalStyles.colors.green_primary },
           headerTintColor: GlobalStyles.colors.green_lightest,
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Home" component={HomeScreen} options={
+          {title:"﷽",
+            headerTitleAlign:'center',
+          }
+        }/>
       </Stack.Navigator>
     </NavigationContainer>
   );
