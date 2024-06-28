@@ -32,8 +32,6 @@ function Tasbeeh() {
       <ImageBackground
         source={require("../assets/masbaha.jpg")}
         style={styles.img}
-        blurRadius={5}
-        opacity={0.45}
         borderTopRightRadius={75}
         imageStyle={styles.imageStyle}
       >
@@ -85,7 +83,7 @@ const styles = StyleSheet.create({
   },
   imageStyle:{
     backgroundColor: GlobalStyles.colors.green_primary,
-    opacity: 0.45
+    opacity: 0.6,
   },
   Countertext:{
     fontSize: 40,

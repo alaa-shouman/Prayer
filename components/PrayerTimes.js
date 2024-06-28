@@ -1,13 +1,15 @@
 // PrayerTimes.js
 
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Dimensions, Alert } from "react-native";
+import { View, Text, StyleSheet, Dimensions, Alert, Pressable } from "react-native";
 import { GlobalStyles } from "../constants/styles";
 import useGetPrayerTimes from "../function/useGetPrayerTimes";
+import { useNavigation } from "@react-navigation/native";
 
 const { height } = Dimensions.get("window");
 
 const PrayerTimes = () => {
+  const Navigation = useNavigation()
   const { prayerTimes, isLoading } = useGetPrayerTimes();
   const [upcomingPrayer, setUpcomingPrayer] = useState(null);
 
@@ -34,6 +36,14 @@ const PrayerTimes = () => {
     );
   } else {
     return (
+      <Pressable
+      style={({ pressed }) => [
+        styles.button,
+        pressed && styles.buttonPressed,
+      ]}
+      android_ripple={{ color: 'rgba(0, 0, 0, 0.1)', borderless: false }}
+      onPress={()=> Navigation.navigate("adan",{times:prayerTimes})}
+      >
       <View style={styles.container}>
         <View>
           <Text style={styles.times}>UPCOMING PRAYER</Text>
@@ -44,6 +54,7 @@ const PrayerTimes = () => {
           )}
         </View>
       </View>
+      </Pressable>
     );
   }
 };
@@ -63,5 +74,14 @@ const styles = StyleSheet.create({
     margin: 10,
     textAlign: "center",
     color: GlobalStyles.colors.green_lightest,
+  },
+
+  buttonPressed: {
+    opacity: 0.8,
+  },
+  buttonText: {
+    fontSize: 16,
+    color: '#000000',
+    fontWeight: 'bold',
   },
 });

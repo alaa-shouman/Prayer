@@ -4,10 +4,12 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
+import AdhanScreen from "./screens/AdhanScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -21,6 +23,7 @@ export default function App() {
           component={HomeScreen}
           options={{ title: "﷽", headerTitleAlign: "center" }}
         />
+        <Stack.Screen name="adan" component={AdhanScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
