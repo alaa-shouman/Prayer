@@ -10,7 +10,6 @@ export default function useGetPrayerTimes() {
     const api =
       "https://api.aladhan.com/v1/calendarByCity/2024/5?city=Beirut&country=Lebanon&method=0";
 
-    // todo asdbas
     setIsLoading(true);
     try {
       const response = await axios.get(api);
