@@ -35,10 +35,11 @@ function Tasbeeh() {
         blurRadius={5}
         opacity={0.45}
         borderTopRightRadius={75}
+        imageStyle={styles.imageStyle}
       >
         <View style={styles.bg}>
           <Text style={styles.text}>{tasbehat[i]}</Text>
-          <Text style={styles.text}>{tasbeehCount}</Text>
+          <Text style={styles.Countertext}>{tasbeehCount}</Text>
         </View>
         <View style={styles.btn}>
           <Button onclick={handleTasbeeh}>Click</Button>
@@ -72,13 +73,28 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   text: {
-    fontSize: 24,
+    fontSize: 28,
     margin: 10,
     textAlign: "center",
     justifyContent: "center",
     color: GlobalStyles.colors.green_dark,
+    fontWeight:'bold',
   },
   bg: {
     borderRadius: 10,
   },
+  imageStyle:{
+    backgroundColor: GlobalStyles.colors.green_primary,
+    opacity: 0.45
+  },
+  Countertext:{
+    fontSize: 40,
+    textAlign: "center",
+    justifyContent: "center",
+    color: GlobalStyles.colors.green_dark,
+    marginTop: 10,
+    marginBottom: 30
+
+
+  }
 });
